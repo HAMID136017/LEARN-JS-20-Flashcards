@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1324">
+  <meta name="description" content="۲۰ فلش‌کارت تعاملی جاوااسکریپت برای یادگیری امنیت وب و باگ‌بانتی، همراه با طرح‌وارهٔ سادهٔ هر پاسخ.">
+  <title>۲۰ فلش‌کارت جاوااسکریپت امنیتی</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0b1324; --panel:#111d32; --panel2:#17253d; --line:#2b3b55; --text:#edf5ff; --muted:#a9bdd3; --mint:#72e4c0; --gold:#f8cb76; --coral:#ff948c; }
+    * { box-sizing:border-box }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at 15% 0%,#1c3152 0,transparent 33%),radial-gradient(circle at 95% 85%,#153d41 0,transparent 32%),var(--bg); color:var(--text); font-family:Tahoma,"Segoe UI",sans-serif; line-height:1.85 }
+    button { font:inherit; cursor:pointer }
+    button:focus-visible { outline:3px solid var(--mint); outline-offset:3px }
+    .wrap { width:min(1040px,calc(100% - 32px)); margin:auto; padding:36px 0 70px }
+    header { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; margin-bottom:28px }
+    .eyebrow { margin:0 0 8px; color:var(--mint); font-size:.82rem; letter-spacing:.02em; font-weight:700 }
+    h1 { font-size:clamp(1.8rem,4vw,3.15rem); line-height:1.45; margin:0 0 12px; letter-spacing:-.04em }
+    .intro { max-width:680px; color:var(--muted); margin:0; font-size:.95rem }
+    .badge { white-space:nowrap; border:1px solid #376b69; color:var(--mint); border-radius:999px; padding:5px 14px; background:#173233; font-size:.82rem }
+    .toolbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin:22px 0 18px }
+    .chips { display:flex; gap:8px; flex-wrap:wrap }
+    .chip,.ghost { border:1px solid var(--line); background:#14223a; color:var(--muted); border-radius:12px; padding:7px 13px }
+    .chip[aria-pressed="true"] { background:#23534f; border-color:var(--mint); color:#fff }
+    .ghost:hover,.chip:hover { border-color:var(--mint); color:#fff }
+    .counter { color:var(--muted); font-size:.9rem }
+    .progress { height:7px; background:#1b2a43; border-radius:999px; overflow:hidden; margin-bottom:18px }
+    .progress > span { display:block; width:0; height:100%; border-radius:999px; background:linear-gradient(90deg,#4bc9b2,#b5f5c5); transition:width .3s }
+    .stage { perspective:1200px }
+    .card { display:block; position:relative; width:100%; height:430px; border:0; padding:0; text-align:right; color:var(--text); background:transparent; border-radius:26px; perspective:inherit }
+    .card-inner { position:relative; display:block; width:100%; height:100%; transform-style:preserve-3d; transition:transform .55s cubic-bezier(.2,.7,.2,1) }
+    .card.is-flipped .card-inner { transform:rotateY(180deg) }
+    .face { position:absolute; inset:0; display:flex; flex-direction:column; backface-visibility:hidden; -webkit-backface-visibility:hidden; overflow:auto; border:1px solid #36506e; border-radius:26px; padding:clamp(22px,4.5vw,42px); box-shadow:0 25px 60px #0005 }
+    .front { background:linear-gradient(145deg,#192d4b 0%,#15253e 60%,#15363d 100%) }
+    .back { background:linear-gradient(145deg,#163a40 0%,#15283f 70%); transform:rotateY(180deg) }
+    .face-top { display:flex; align-items:center; justify-content:space-between; gap:12px; color:var(--muted); font-size:.82rem }
+    .topic { color:var(--mint); font-weight:700 }
+    .star { color:var(--gold) }
+    .question { margin:auto 0; max-width:760px; font-size:clamp(1.45rem,3vw,2.25rem); line-height:1.8; font-weight:700 }
+    .hint { color:var(--muted); font-size:.85rem; margin:0 }
+    .answer-title { color:var(--mint); font-size:.78rem; font-weight:700; margin:14px 0 4px }
+    .answer { margin:0 0 12px; font-size:clamp(.96rem,2vw,1.1rem); font-weight:600 }
+    .schema-label { color:var(--gold); font-size:.76rem; font-weight:700; margin:0 0 7px }
+    .schema { display:flex; flex-wrap:wrap; align-items:stretch; gap:7px; direction:rtl; margin-bottom:12px }
+    .node { flex:1 1 125px; display:grid; place-items:center; min-height:48px; padding:7px 12px; text-align:center; border:1px solid #416d73; background:#1c4249; color:#ebfffa; border-radius:12px; font-size:.87rem; line-height:1.6 }
+    .arrow { align-self:center; color:var(--gold); font-size:1.25rem; font-weight:700 }
+    .why { margin:0; border-right:3px solid var(--gold); padding:2px 12px 2px 0; color:#d9e8ed; font-size:.88rem }
+    .controls { display:flex; justify-content:center; align-items:center; gap:12px; margin-top:18px; flex-wrap:wrap }
+    .primary { border:0; background:var(--mint); color:#082b2b; font-weight:800; padding:11px 24px; border-radius:13px }
+    .primary:hover { background:#a7f4d9 }
+    .secondary { border:1px solid var(--line); background:#1b2c46; color:var(--text); padding:10px 18px; border-radius:13px }
+    .secondary:hover { border-color:var(--mint) }
+    .secondary[disabled] { opacity:.35; cursor:not-allowed }
+    .known[aria-pressed="true"] { border-color:var(--mint); color:var(--mint) }
+    .stats { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; color:var(--muted); font-size:.82rem; margin-top:23px; border-top:1px solid var(--line); padding-top:18px }
+    .stats strong { color:var(--mint) }
+    code { font-family:Consolas,"Courier New",monospace; color:#ffda9f; direction:ltr; unicode-bidi:isolate; white-space:normal }
+    .l { direction:ltr; unicode-bidi:isolate; display:inline-block }
+    @media(max-width:650px) { .wrap{padding-top:22px} header{display:block} .badge{display:inline-block;margin-top:16px} .card{height:510px} .face{padding:22px} .schema{gap:5px} .node{flex-basis:105px;min-height:45px;font-size:.77rem} .arrow{font-size:1rem} .controls{gap:8px} .controls button{padding:9px 13px} }
+    @media(prefers-reduced-motion:reduce) { .card-inner{transition:none} .progress>span{transition:none} }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div>
+        <p class="eyebrow">LEARN JS · مرور فعال برای هانت وب</p>
+        <h1>۲۰ فلش‌کارت جاوااسکریپت امنیتی</h1>
+        <p class="intro">اول خودت جواب بده، بعد کارت را برگردان. پشت هر کارت، پاسخ کوتاه، طرح‌وارهٔ مسیر فکر و دلیل کاربرد آن در بررسی امنیت وب آمده است.</p>
+      </div>
+      <span class="badge">★ نکته‌های امنیتی مشخص شده‌اند</span>
+    </header>
+    <section aria-label="فیلتر و پیشرفت">
+      <div class="toolbar">
+        <div class="chips" id="filters"></div>
+        <span class="counter" id="counter" aria-live="polite"></span>
+      </div>
+      <div class="progress" role="progressbar" aria-label="پیشرفت مرور" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress"><span id="progress-fill"></span></div>
+    </section>
+    <section class="stage" aria-label="فلش‌کارت">
+      <button class="card" id="card" type="button" aria-label="نمایش پاسخ کارت">
+        <span class="card-inner">
+          <span class="face front">
+            <span class="face-top"><span class="topic" id="front-topic"></span><span id="front-no"></span></span>
+            <span class="question" id="question"></span>
+            <span class="hint">برای دیدن پاسخ، روی کارت کلیک کن یا کلید فاصله را بزن ↶</span>
+          </span>
+          <span class="face back" aria-hidden="true">
+            <span class="face-top"><span class="topic" id="back-topic"></span><span>پشت کارت · پاسخ</span></span>
+            <span class="answer-title">پاسخ کوتاه</span>
+            <span class="answer" id="answer"></span>
+            <span class="schema-label">طرح‌وارهٔ فهم</span>
+            <span class="schema" id="schema"></span>
+            <span class="why" id="why"></span>
+          </span>
+        </span>
+      </button>
+    </section>
+    <nav class="controls" aria-label="کنترل کارت‌ها">
+      <button class="secondary" id="prev" type="button">→ قبلی</button>
+      <button class="primary" id="flip" type="button">نمایش پاسخ</button>
+      <button class="secondary" id="next" type="button">بعدی ←</button>
+      <button class="secondary known" id="known" type="button" aria-pressed="false">✓ یاد گرفتم</button>
+    </nav>
+    <div class="stats"><span id="known-count"></span><span>کلیدهای ← و → برای جابه‌جایی · فاصله برای برگرداندن</span><button class="ghost" id="shuffle" type="button">آمیختن کارت‌ها ↻</button></div>
+  </main>
+  <script>
+    const cards = [
+      {q:'متغیر چه کاری می‌کند؟',a:'مقداری را با یک نام نگه می‌دارد تا دوباره از آن استفاده کنیم.',s:['مقدار','نام‌گذاری','استفادهٔ دوباره'],w:'مثلاً شناسهٔ کاربر یا پاسخ یک درخواست را نگه می‌داریم.',c:'مبانی'},
+      {q:'فرق let و const چیست؟',a:'با let می‌توان مقدار متغیر را دوباره تعیین کرد؛ با const نمی‌توان.',s:['let → تغییر مجاز','const → تعیین دوباره ممنوع'],w:'const از تغییر ناخواستهٔ نام‌های ثابت جلوگیری می‌کند؛ محتوای شیء const همچنان ممکن است تغییر کند.',c:'مبانی'},
+      {q:'فرق «42» و 42 چیست؟',a:'اولی متن است؛ دومی عدد.',s:['«42» + 1','«421»'],w:'برای جمع عددی، متن را درست تبدیل کن: Number("42") + 1 برابر 43 می‌شود.',c:'مبانی'},
+      {q:'فرق undefined و null چیست؟',a:'undefined یعنی مقداری تعیین نشده؛ null یعنی عمداً مقدار تهی گذاشته شده است.',s:['مقدار نگرفته → undefined','عمداً تهی → null'],w:'هنگام خواندن پاسخ سرور، نبود فیلد و تهی بودن آن را یکی فرض نکن.',c:'مبانی'},
+      {q:'NaN چه زمانی دیده می‌شود؟',a:'وقتی یک تبدیل یا محاسبهٔ عددی، عدد معتبر ندهد.',s:['Number("200tl")','تبدیل نامعتبر','NaN'],w:'ورودی عددی را پیش از استفاده بررسی کن؛ typeof NaN با وجود نامش number است.',c:'مبانی'},
+      {q:'عملگر === چه چیزی را مقایسه می‌کند؟',a:'هم مقدار و هم نوع داده را مقایسه می‌کند.',s:['"42" : متن','42 : عدد','برابر نیستند'],w:'از برابر شمردن ناخواستهٔ متن و عدد جلوگیری می‌کند.',c:'شرط و تابع'},
+      {q:'فرق && و || در شرط چیست؟',a:'&& درست بودن هر دو شرط را می‌خواهد؛ || درست بودن دست‌کم یکی را.',s:['&& → هر دو','|| → یکی کافی است'],w:'★ شرط داخل مرورگر فقط نمایش را کنترل می‌کند؛ مجوز واقعی باید در سرور بررسی شود.',c:'شرط و تابع',sec:true},
+      {q:'تابع و پارامتر چه هستند؟',a:'تابع کاری قابل تکرار است و پارامتر ورودی آن کار.',s:['role : ورودی','checkRole(role) : تابع','نتیجه'],w:'در کد، نام تابع را از نام پارامتر جدا بخوان تا مسیر داده را بفهمی.',c:'شرط و تابع'},
+      {q:'find در آرایه چه می‌کند؟',a:'اولین عضوی را که با شرط مطابقت دارد برمی‌گرداند.',s:['فهرست کاربران','جست‌وجوی id','اولین کاربر مطابق'],w:'★ پیدا شدن یک کاربر در دادهٔ مرورگر به معنی مجوز دسترسی به او نیست.',c:'داده و شیء',sec:true},
+      {q:'نقش را از {user:{role:"editor"}} چگونه می‌خوانیم؟',a:'با data.user.role، اگر این شیء داخل متغیر data باشد.',s:['data','user','role → editor'],w:'role درون user قرار دارد؛ data.role در این ساختار undefined است.',c:'داده و شیء'},
+      {q:'فرق JSON.stringify و response.json() چیست؟',a:'اولی داده را به متن JSON برای ارسال تبدیل می‌کند؛ دومی JSON دریافت‌شده را به دادهٔ قابل استفاده می‌خواند.',s:['شیء → JSON.stringify → متن ارسالی','متن دریافتی → response.json() → داده'],w:'جهت تبدیل را هنگام خواندن درخواست و پاسخ قاطی نکن.',c:'درخواست و پاسخ'},
+      {q:'document.querySelector("#nameBox") چه می‌کند؟',a:'عنصری را که شناسهٔ nameBox دارد در صفحه پیدا می‌کند.',s:['صفحهٔ HTML','جست‌وجوی #nameBox','عنصر صفحه'],w:'این خط به‌تنهایی هیچ درخواست شبکه‌ای نمی‌فرستد.',c:'صفحه و DOM'},
+      {q:'فرق textContent و innerHTML چیست؟',a:'textContent متن را عیناً نشان می‌دهد؛ innerHTML آن را به‌صورت HTML تفسیر می‌کند.',s:['<b>Sara</b>','textContent → علامت‌ها دیده می‌شوند','innerHTML → نام پررنگ'],w:'★ ورود دادهٔ کاربر به innerHTML سرنخ بررسی XSS است؛ پررنگ شدن به‌تنهایی اجرای کد را ثابت نمی‌کند.',c:'صفحه و DOM',sec:true},
+      {q:'input.value.trim() چه فایده‌ای دارد؟',a:'مقدار کادر را می‌گیرد و فاصله‌های ابتدا و انتهای آن را حذف می‌کند.',s:['"   "','trim()','""'],w:'★ اعتبارسنجی مرورگر کافی نیست؛ سرور هم باید ورودی را خودش بررسی کند.',c:'صفحه و DOM',sec:true},
+      {q:'addEventListener("click", showProfile) چه زمانی تابع را اجرا می‌کند؟',a:'هنگام کلیک روی عنصر، تابع showProfile اجرا می‌شود.',s:['کلیک کاربر','رویداد click','اجرای showProfile'],w:'با دنبال کردن تابع می‌فهمی کدام کلیک باعث درخواست به سرور می‌شود.',c:'صفحه و DOM'},
+      {q:'fetch("/api/profile") چه می‌کند؟',a:'از مرورگر به مسیر /api/profile درخواست می‌فرستد؛ روش پیش‌فرض GET است.',s:['مرورگر','GET /api/profile','سرور'],w:'★ از روی مسیرهای fetch می‌توان نقاط ورودی API را در کد پیدا کرد.',c:'درخواست و پاسخ',sec:true},
+      {q:'method و headers و body در درخواست POST چه هستند؟',a:'method روش درخواست، headers توضیح قالب داده و body خود دادهٔ ارسالی است.',s:['method: POST','Content-Type: application/json','body: داده'],w:'★ نام Hamid در بدنه می‌رود؛ هدر قالب آن را اعلام می‌کند. سرور باید داده و مجوز را بررسی کند.',c:'درخواست و پاسخ',sec:true},
+      {q:'فرق response.status و response.ok چیست؟',a:'status عدد وضعیت مثل 403 است؛ ok فقط برای وضعیت‌های 200 تا 299 درست می‌شود.',s:['پاسخ 403','status → 403','ok → false'],w:'★ پاسخ 403 به‌تنهایی وارد catch نمی‌شود. پاسخ 200 هم اثبات انجام عملیات نیست؛ اثر واقعی را بررسی کن.',c:'درخواست و پاسخ',sec:true},
+      {q:'چه وقت response.text() و چه وقت response.json()؟',a:'برای متن ساده از text() و برای بدنهٔ JSON از json() استفاده کن.',s:['Not allowed → text()','{"error":"..."} → json()'],w:'json() روی متن نامعتبر خطا می‌دهد؛ قالب واقعی پاسخ را از هدر و بدنه بخوان.',c:'درخواست و پاسخ'},
+      {q:'چه زمانی تغییر شناسه نشانهٔ IDOR است؟',a:'وقتی حساب تو بدون مجوز، داده یا عملیات خصوصی حساب دیگری را دریافت یا اجرا کند.',s:['حساب خودت → شناسهٔ دیگر','بررسی پاسخ و اثر','دسترسی بی‌مجوز → یافته'],w:'★ صرف تغییر /api/users/12 به /api/users/13 یا دریافت 200 کافی نیست؛ اثر واقعی و نبود مجوز را ثابت کن.',c:'درخواست و پاسخ',sec:true}
+    ];
+    const categories=['همه','مبانی','شرط و تابع','داده و شیء','صفحه و DOM','درخواست و پاسخ','★ امنیتی','مرور دوباره'];
+    const $=id=>document.getElementById(id);
+    let known=new Set(); try { known=new Set(JSON.parse(localStorage.getItem('learn-js-known-v1')||'[]')); } catch {}
+    let filter='همه', order=cards.map((_,i)=>i), at=0, flipped=false;
+    function visible(){ return order.filter(i=>filter==='همه'||filter==='★ امنیتی'&&cards[i].sec||filter==='مرور دوباره'&&!known.has(i)||cards[i].c===filter); }
+    function save(){ try { localStorage.setItem('learn-js-known-v1',JSON.stringify([...known])); } catch {} }
+    function drawFilters(){ $('filters').replaceChildren(); categories.forEach(label=>{ const b=document.createElement('button'); b.className='chip'; b.type='button'; b.textContent=label; b.setAttribute('aria-pressed',String(filter===label)); b.onclick=()=>{filter=label;at=0;flipped=false;drawFilters();render()}; $('filters').append(b) }) }
+    function flip(force){ flipped=typeof force==='boolean'?force:!flipped; $('card').classList.toggle('is-flipped',flipped); $('card').setAttribute('aria-label',flipped?'نمایش سؤال کارت':'نمایش پاسخ کارت'); $('flip').textContent=flipped?'نمایش سؤال':'نمایش پاسخ'; document.querySelector('.back').setAttribute('aria-hidden',String(!flipped)) }
+    function render(){ const v=visible(); if(at>=v.length)at=Math.max(0,v.length-1); const i=v[at]; $('counter').textContent=v.length?`کارت ${at+1} از ${v.length}`:'همهٔ این کارت‌ها را یاد گرفته‌ای!'; $('known-count').innerHTML=`یادگرفته‌ها: <strong>${known.size} از ${cards.length}</strong>`; $('progress').setAttribute('aria-valuenow',String(v.length?Math.round((at+1)/v.length*100):100)); $('progress-fill').style.width=`${v.length?(at+1)/v.length*100:100}%`; $('prev').disabled=at===0; $('next').disabled=at>=v.length-1; $('flip').disabled=!v.length; $('known').disabled=!v.length; if(!v.length){$('question').textContent='آفرین! کارت دیگری در این بخش نمانده است.';$('answer').textContent='از فیلتر «همه» دوباره شروع کن.';$('schema').replaceChildren();$('why').textContent='';$('front-topic').textContent='مرور کامل';$('back-topic').textContent='';$('front-no').textContent='';flip(false);return}
+      const card=cards[i]; $('front-topic').textContent=card.sec?'★ '+card.c:card.c; $('back-topic').textContent=card.sec?'★ نکتهٔ امنیتی · '+card.c:card.c; $('front-no').textContent=`${i+1} / ۲۰`; $('question').textContent=card.q; $('answer').textContent=card.a; $('why').textContent=card.w; $('schema').replaceChildren(); card.s.forEach((step,n)=>{ if(n){const arrow=document.createElement('span');arrow.className='arrow';arrow.setAttribute('aria-hidden','true');arrow.textContent='←';$('schema').append(arrow)} const node=document.createElement('span');node.className='node';node.textContent=step;$('schema').append(node) }); $('known').setAttribute('aria-pressed',String(known.has(i))); $('known').textContent=known.has(i)?'✓ یاد گرفته‌ام':'✓ یاد گرفتم';flip(false) }
+    $('card').onclick=()=>{if(visible().length)flip()}; $('flip').onclick=()=>flip(); $('prev').onclick=()=>{if(at>0){at--;render()}}; $('next').onclick=()=>{if(at<visible().length-1){at++;render()}};
+    $('known').onclick=()=>{const i=visible()[at];if(i===undefined)return; known.has(i)?known.delete(i):known.add(i); save(); if(filter==='مرور دوباره')render(); else {$('known').setAttribute('aria-pressed',String(known.has(i)));$('known').textContent=known.has(i)?'✓ یاد گرفته‌ام':'✓ یاد گرفتم';$('known-count').innerHTML=`یادگرفته‌ها: <strong>${known.size} از ${cards.length}</strong>`} };
+    $('shuffle').onclick=()=>{const current=visible()[at];for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]]}at=Math.max(0,visible().indexOf(current));render()};
+    document.addEventListener('keydown',e=>{if(e.target instanceof HTMLElement&&/INPUT|TEXTAREA/.test(e.target.tagName))return;if(e.code==='ArrowLeft'&&at<visible().length-1){at++;render()}else if(e.code==='ArrowRight'&&at>0){at--;render()}else if(e.code==='Space'&&e.target!==$('card')){e.preventDefault();if(visible().length)flip()}});
+    drawFilters();render();
+  </script>
+</body>
+</html>
