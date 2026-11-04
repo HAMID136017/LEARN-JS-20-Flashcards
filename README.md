@@ -8,6 +8,7 @@
 
 - **JavaScript امنیتی — ۲۰ کارت:** مبانی، شرط و تابع، داده و شیء، DOM، درخواست و پاسخ API و نکته‌های امنیتی.
 - **SQL — ۳۷ کارت:** Query و MySQL، SELECT و WHERE، شرط‌ها، IN، BETWEEN، NULL، مرتب‌سازی، COUNT، DISTINCT، MIN و MAX، GROUP BY، HAVING، AS، AVG و SUM.
+- **Linux/Bash — ۵۳ کارت:** مسیرها، فایل‌ها، مجوزها، grep، شرط‌ها، آرگومان‌ها، حلقه‌ها، کدهای خروج، گزارش و جست‌وجوی بازگشتی.
 
 ## امکانات
 
