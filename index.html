@@ -23,10 +23,11 @@
         <p class="intro" id="intro"></p>
         <div class="course-summary" id="course-summary"></div>
       </div>
-      <span class="badge">MAKE FLASHCARDS · پاسخ + طرح‌واره</span>
+      <span class="badge">MAKE FLASHCARDS · تست + پاسخ تشریحی</span>
     </header>
     <section aria-label="فیلتر و پیشرفت">
       <div class="toolbar"><div class="chips" id="filters"></div><span class="counter" id="counter" aria-live="polite"></span></div>
+      <div class="quiz-toolbar"><span>روش مرور:</span><button type="button" class="chip" id="mode-quiz" aria-pressed="true">تست چهارگزینه‌ای</button><button type="button" class="chip" id="mode-classic" aria-pressed="false">فلش‌کارت معمولی</button><span id="quiz-score" class="quiz-score" aria-live="polite"></span></div>
       <div class="progress" role="progressbar" aria-label="پیشرفت مرور" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress"><span id="progress-fill"></span></div>
     </section>
     <section class="stage" aria-label="فلش‌کارت">
@@ -35,7 +36,7 @@
           <span class="face front">
             <span class="face-top"><span class="topic" id="front-topic"></span><span id="front-no"></span></span>
             <span class="question" id="question"></span>
-            <span class="hint">اول خودت جواب بده؛ سپس روی کارت کلیک کن یا کلید فاصله را بزن ↶</span>
+            <span class="hint" id="front-hint">گزینه درست را انتخاب کن؛ سپس پاسخ تشریحی نمایش داده می‌شود.</span>
           </span>
           <span class="face back" aria-hidden="true">
             <span class="face-top"><span class="topic" id="back-topic"></span><span>پشت کارت · پاسخ</span></span>
@@ -44,9 +45,11 @@
             <span class="schema-label">طرح‌وارهٔ فهم</span>
             <span class="schema" id="schema"></span>
             <span class="why" id="why"></span>
+            <span id="example-wrap" class="example-wrap"><span class="schema-label">مثال کد / درخواست</span><span id="example-code" class="code-example" dir="ltr"></span></span>
           </span>
         </span>
       </button>
+      <div id="quiz-area" class="quiz-area" aria-label="گزینه‌های پاسخ"><div id="quiz-options" class="quiz-options"></div><div id="quiz-feedback" class="quiz-feedback" role="status" aria-live="polite"></div></div>
     </section>
     <nav class="controls" aria-label="کنترل کارت‌ها">
       <button class="secondary" id="prev" type="button">→ قبلی</button>
