@@ -74,6 +74,27 @@
       web:{menu:'Web Application',eyebrow:'LEARN WEB · ZeroX · HTTP و امنیت وب',title:'۴۸ فلش‌کارت Web Application',intro:'از معماری وب و HTTP تا Bearer، JWT، کوکی، نشست و تمرین‌های Burp؛ پاسخ کوتاه، طرح‌واره و نکتهٔ کاربردی.',storage:'learn-web-known-v1',cards:WEB_CARDS}
     };
 
+    courses.sql.cards.push({
+  "q": "این دستور INSERT INTO با چهار علامت ? چه کاری می‌کند؟",
+  "a": "یک Query برای ساخت کاربر جدید آماده می‌کند؛ چهار ? جای name، username، email و password هستند و NOW() زمان ایجاد و ویرایش را ثبت می‌کند.",
+  "choices": [
+    "اطلاعات تمام کاربران را از جدول users نمایش می‌دهد.",
+    "چهار کاربر خالی را فوراً داخل جدول ثبت می‌کند.",
+    "جدول users را همراه با ستون‌های جدید ایجاد می‌کند."
+  ],
+  "s": [
+    "رشتهٔ SQL آماده می‌شود",
+    "?ها به داده‌ها وصل می‌شوند",
+    "execute اجرا می‌شود",
+    "کاربر ثبت می‌شود"
+  ],
+  "w": "این خط به‌تنهایی دیتابیس را تغییر نمی‌دهد. اجرای واقعی به prepare، bind_param و execute نیاز دارد. جای‌نگهدارهای ? در Prepared Statement خطر SQL Injection را کاهش می‌دهند و password باید به‌صورت هش‌شده ذخیره شود.",
+  "c": "INSERT و Prepared Statement",
+  "sec": true,
+  "example": "$insert_user_sql = \"INSERT INTO users\\n(name, username, email, password, created_at, updated_at)\\nVALUES (?, ?, ?, ?, NOW(), NOW())\";\\n\\n$stmt = $conn->prepare($insert_user_sql);\\n$stmt->bind_param(\"ssss\", $name, $username, $email, $hashed_password);\\n$stmt->execute();"
+});
+    courses.sql.title=`${courses.sql.cards.length} فلش‌کارت SQL از پایه تا INSERT امن`;
+
     courses.python.cards.push(...EXTRA_PYTHON_CARDS);
     courses.linux.cards.push(...EXTRA_BASH_CARDS);
     courses.python.title=`${courses.python.cards.length} فلش‌کارت پایتون از متن تا خواندن فایل`;
