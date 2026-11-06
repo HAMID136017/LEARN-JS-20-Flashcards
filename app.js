@@ -74,6 +74,11 @@
       web:{menu:'Web Application',eyebrow:'LEARN WEB · ZeroX · HTTP و امنیت وب',title:'۴۸ فلش‌کارت Web Application',intro:'از معماری وب و HTTP تا Bearer، JWT، کوکی، نشست و تمرین‌های Burp؛ پاسخ کوتاه، طرح‌واره و نکتهٔ کاربردی.',storage:'learn-web-known-v1',cards:WEB_CARDS}
     };
 
+    courses.python.cards.push(...EXTRA_PYTHON_CARDS);
+    courses.linux.cards.push(...EXTRA_BASH_CARDS);
+    courses.python.title=`${courses.python.cards.length} فلش‌کارت پایتون از متن تا خواندن فایل`;
+    courses.linux.title=`${courses.linux.cards.length} فلش‌کارت Linux/Bash از پایه تا شمارش`;
+
     const $=id=>document.getElementById(id);
     const requestedCourse=new URLSearchParams(location.search).get('course');
     let courseKey=Object.prototype.hasOwnProperty.call(courses,requestedCourse)?requestedCourse:'js';
